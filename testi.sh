@@ -8,7 +8,7 @@ Blue='\033[0;34m'
 sudo apt-get upgrade
 
 echo -e "${GREEN}Installing application via apt...${NONE}"
-sudo apt-get install curl wget git gnome-tweaks gnome-shell-extensions zsh gufw htop neofetch bashtop 
+sudo apt-get install curl wget git gnome-tweaks gnome-shell-extensions zsh gufw htop neofetch bashtop VLC
 
 echo -e "${GREEN}Downloading DISCORD...${NONE}"
 wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
@@ -32,6 +32,12 @@ echo -e "${GREEN}Downloading chrome...${NONE}"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 echo -e "${GREEN}Installing chrome...${NONE}"
 sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+
+echo -e "${GREEN}Installing Github desktop...${NONE}"
+wget -qO - https://mirror.mwt.me/ghd/gpgkey | sudo tee /etc/apt/trusted.gpg.d/shiftkey-desktop.asc > /dev/null
+sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any/ any main" > /etc/apt/sources.list.d/packagecloud-shiftkey-desktop.list'
+sudo apt update && sudo apt install github-desktop
 
 echo -e "${GREEN}Installing OH MY ZSH...${NONE}"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
