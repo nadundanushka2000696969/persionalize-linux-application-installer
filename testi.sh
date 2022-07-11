@@ -10,6 +10,11 @@ sudo apt-get upgrade
 echo -e "${GREEN}Installing application via apt...${NONE}"
 sudo apt-get install curl wget git gnome-tweaks gnome-shell-extensions zsh gufw htop neofetch bashtop VLC
 
+
+echo -e "${GREEN}Installing java and the compiler...${NONE}"
+sudo apt install default-jre
+sudo apt install default-jdk
+
 echo -e "${GREEN}Downloading DISCORD...${NONE}"
 wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
 echo -e "\n${GREEN}Installing DISCORD...${NONE}"
