@@ -24,7 +24,7 @@ echo -e "\n${GREEN}Downloading BETERDISCORD...${NONE}"
 curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
 echo -e "\n${GREEN}Changing permission [BETERDISCORD]...${NONE}"
 chmod +x betterdiscordctl
-echo -e "\n${GREEN}Moving to the bin foler [BETERDISCORD]...${NONE}"
+echo -e "\n${GREEN}Moving to the bin folder [BETERDISCORD]...${NONE}"
 sudo mv betterdiscordctl /usr/local/bin
 echo -e "\n${GREEN}Installing BETTERDISCORD...${Yellow}"
 betterdiscordctl --d-install traditional install
