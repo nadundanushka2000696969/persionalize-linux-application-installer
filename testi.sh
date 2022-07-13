@@ -44,6 +44,11 @@ wget -qO - https://mirror.mwt.me/ghd/gpgkey | sudo tee /etc/apt/trusted.gpg.d/sh
 sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any/ any main" > /etc/apt/sources.list.d/packagecloud-shiftkey-desktop.list'
 sudo apt update && sudo apt install github-desktop
 
+echo -e "${GREEN}Installing VSCodium...${NONE}"
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+sudo apt update && sudo apt install codium
+
 echo -e "${GREEN}Installing OH MY ZSH...${NONE}"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo -e "${GREEN}Cloning POWERLEVEL10k...${NONE}"
@@ -56,7 +61,6 @@ echo -e "${NONE} \n ${Yellow}Check if the omzsh theme has changed to POWERLEVEL1
 sleep 2
 
 echo -e "${GREEN}Installing application via snap...${NONE}"
-sudo snap install --classic code
 sudo snap install sublime-text --classic
 sudo snap install spotify
 
