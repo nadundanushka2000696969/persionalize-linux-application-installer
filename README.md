@@ -1,4 +1,4 @@
-# persional-linux-application-installer
+# personal-linux-application-installer
 
 #### Applications
 <ul>
