@@ -15,7 +15,7 @@
   <li>betterdiscord</li>
   <li>ulancher</li>
   <li>sublime text</li>
-  <li>vs code</li>
+  <li>vscodium</li>
   <li>spotify</li>
   <li>zsh</li>
   <li>oh my zsh</li>
