@@ -8,17 +8,38 @@ Blue='\033[0;34m'
 sudo apt-get upgrade
 
 echo -e "${GREEN}Installing application via apt...${NONE}"
-sudo apt-get install curl wget git gnome-tweaks gnome-shell-extensions zsh gufw htop neofetch bashtop VLC
+echo -e "${GREEN}curl ${NONE}"
+sudo apt-get -y install curl 
+echo -e "${GREEN}wget${NONE}"
+sudo apt-get -y install wget 
+echo -e "${GREEN}git${NONE}"
+sudo apt-get -y install git 
+echo -e "${GREEN}gnome-tweaks${NONE}"
+sudo apt-get -y install gnome-tweaks 
+echo -e "${GREEN}gnome-shell-extensions${NONE}"
+sudo apt-get -y install gnome-shell-extensions 
+echo -e "${GREEN}gufw${NONE}"
+sudo apt-get -y install gufw
+echo -e "${GREEN}htop${NONE}"
+sudo apt-get -y install htop
+echo -e "${GREEN}neofetch${NONE}"
+sudo apt-get -y install neofetch
+echo -e "${GREEN}bashtop${NONE}"
+sudo apt-get -y install bashtop
+echo -e "${GREEN}vlc${NONE}"
+sudo apt-get -y install vlc
+echo -e "${GREEN}zsh${NONE}"
+sudo apt-get -y install zsh
 
 
 echo -e "${GREEN}Installing java and the compiler...${NONE}"
-sudo apt install default-jre
-sudo apt install default-jdk
+sudo apt -y install default-jre
+sudo apt -y install default-jdk
 
 echo -e "${GREEN}Downloading DISCORD...${NONE}"
 wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
 echo -e "\n${GREEN}Installing DISCORD...${NONE}"
-dpkg -i discord.deb
+sudo dpkg -i discord.deb
 
 echo -e "\n${GREEN}Downloading BETERDISCORD...${NONE}"
 curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
@@ -42,12 +63,12 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 echo -e "${GREEN}Installing Github desktop...${NONE}"
 wget -qO - https://mirror.mwt.me/ghd/gpgkey | sudo tee /etc/apt/trusted.gpg.d/shiftkey-desktop.asc > /dev/null
 sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any/ any main" > /etc/apt/sources.list.d/packagecloud-shiftkey-desktop.list'
-sudo apt update && sudo apt install github-desktop
+sudo apt update && sudo apt -y install github-desktop
 
 echo -e "${GREEN}Installing VSCodium...${NONE}"
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
 echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
-sudo apt update && sudo apt install codium
+sudo apt update && sudo apt install -y codium
 
 echo -e "${GREEN}Installing OH MY ZSH...${NONE}"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -60,9 +81,22 @@ sed -n 16,19p ~/.zshrc
 echo -e "${NONE} \n ${Yellow}Check if the omzsh theme has changed to POWERLEVEL10k...${NONE}"
 sleep 2
 
+echo -e "${GREEN}Installing qBitTorrent...${NONE}"
+sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
+sudo apt -y install qbittorrent
+
+echo -e "${GREEN}Installing spotify...${NONE}"
+#getting the key
+wget -O- https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/spotify.gpg
+#adding the key to the repo
+echo "deb [signed-by=/usr/share/keyrings/spotify.gpg] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt update
+sudo apt install spotify-client -y
+
 echo -e "${GREEN}Installing application via snap...${NONE}"
 sudo snap install sublime-text --classic
 sudo snap install spotify
+
 
 echo -e "${GREEN}Updating...${NONE}"
 sudo apt-get update
